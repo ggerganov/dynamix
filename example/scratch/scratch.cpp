@@ -13,6 +13,7 @@
 using namespace std;
 
 DYNAMIX_MULTICAST_MESSAGE_1(void, testv, vector<int>, data);
+DYNAMIX_MESSAGE_2(int, yyy, int, a, float, b);
 
 class a
 {
@@ -21,9 +22,11 @@ public:
     {
         cout << "a: " << data.size() << endl;
     }
+
+    int zyyy(int a, float b) { return short(b) + a; }
 };
 
-DYNAMIX_DEFINE_MIXIN(a, testv_msg);
+DYNAMIX_DEFINE_MIXIN(a, testv_msg & bind(yyy_msg, &a::zyyy));
 
 class b
 {
@@ -97,7 +100,10 @@ int main()
     vector<int> foo = {1, 2, 3};
     testv(hero, foo);
 
+    cout << yyy(hero, 3, 5.2f) << endl;
+
     return 0;
 }
 
 DYNAMIX_DEFINE_MESSAGE(testv);
+DYNAMIX_DEFINE_MESSAGE(yyy);

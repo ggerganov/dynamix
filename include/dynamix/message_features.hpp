@@ -58,6 +58,20 @@ internal::message_perks_and_caller<Message> bind(Message*, typename Message::cal
     return mp;
 }
 
+// bind a method of the class to a message with a different name
+template <typename Message, typename Mixin, typename Ret, typename... Args>
+internal::message_perks_and_caller<Message> bind(Message* msg, Ret (Mixin::*ptr)(Args...))
+{
+    static const auto method = ptr;
+    static typename Message::caller_func the_caller = [](void* vm, Args... args) -> Ret
+    {
+        Mixin* m = reinterpret_cast<Mixin*>(vm);
+        return (m->*method)(std::forward<Args>(args)...);
+    };
+
+    return bind(msg, the_caller);
+}
+
 // if we ever want type safety to the bound functions we need to use this implementation:
 //
 // template <typename Message, typename Caller>
