@@ -58,6 +58,12 @@ internal::message_perks_and_caller<Message> bind(Message*, typename Message::cal
     return mp;
 }
 
+template <typename Message, typename Mixin, typename Ret, typename... Args>
+internal::message_perks_and_caller<Message> bind(Message* msg, Ret (*ptr)(Mixin*, Args...))
+{
+
+}
+
 // bind a method of the class to a message with a different name
 template <typename Message, typename Mixin, typename Ret, typename... Args>
 internal::message_perks_and_caller<Message> bind(Message* msg, Ret (Mixin::*ptr)(Args...))
