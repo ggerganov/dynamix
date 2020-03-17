@@ -109,7 +109,7 @@ public:
     }
 
     template <typename Message>
-    feature_parser_phase_2& operator & (message_perks_and_caller<Message> mp)
+    feature_parser_phase_2& operator & (message_perks_and_caller<Mixin, Message> mp)
     {
         Message& msg = get_registered_feature<Message>();
         parse_message(msg, mp.bid, mp.priority, mp.caller);

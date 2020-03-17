@@ -33,7 +33,7 @@ class b
 public:
 };
 
-void b_testv(void*, vector<int> data)
+void b_testv(b*, vector<int> data)
 {
     cout << "b: " << data.size() << endl;
 }
@@ -91,7 +91,7 @@ int main()
     msg.caller = reinterpret_cast<dynamix::internal::func_ptr>(script_testv);
     msg.message = static_cast<dynamix::internal::message_t*>(&_dynamix_get_mixin_feature_safe(testv_msg));
 
-    auto hero = new dynamix::object;
+    dynamix::object hero;
     dynamix::mutate(hero)
         .add<a>()
         .add<b>()
