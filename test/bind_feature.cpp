@@ -21,18 +21,17 @@ DYNAMIX_CONST_MULTICAST_MESSAGE_0(int, multi);
 struct a
 {
     int ia;
-    void set_a(int);
+    void set_a(int) { ia = 3243; }
+    int multi();
 };
 
-void a_set_a(a* vself, int val)
+void a_set_a(int* self, int val)
 {
-    auto self = reinterpret_cast<a*>(vself);
-    self->ia = val;
+    //self->ia = val;
 }
 
-int a_multi(a* vself)
+int a_multi(const a* self)
 {
-    auto self = reinterpret_cast<const a*>(vself);
     return self->ia;
 }
 
@@ -43,15 +42,13 @@ struct a2
     int ia2;
 };
 
-void a2_set_a(a2* vself, int val)
+void a2_set_a(a2* self, int val)
 {
-    auto self = reinterpret_cast<a2*>(vself);
-    self->ia2 = val + 1;
+     self->ia2 = val + 1;
 }
 
-int a2_multi(a2* vself)
+int a2_multi(const a2* self)
 {
-    auto self = reinterpret_cast<const a2*>(vself);
     return self->ia2 + 1;
 }
 
@@ -66,9 +63,8 @@ struct b
     }
 };
 
-void b_set_b(b* vself, int val)
+void b_set_b(b* self, int val)
 {
-    auto self = reinterpret_cast<b*>(vself);
     self->ib = val;
 }
 

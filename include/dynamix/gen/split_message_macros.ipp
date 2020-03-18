@@ -20,9 +20,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin ) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -118,9 +117,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -216,9 +214,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0, arg1_type a1) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -314,9 +311,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0, arg1_type a1, arg2_type a2) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -412,9 +408,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0, arg1_type a1, arg2_type a2, arg3_type a3) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -510,9 +505,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0, arg1_type a1, arg2_type a2, arg3_type a3, arg4_type a4) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \
@@ -608,9 +602,8 @@
             : I_DYNAMIX_MESSAGE_CALLER_STRUCT(message_mechanism)(I_DYNAMIX_PP_STRINGIZE(message_name)) \
         {} \
         template <typename Mixin> \
-        ::dynamix::internal::func_ptr get_caller_for() const \
+        static ::dynamix::internal::func_ptr get_caller_for() \
         { \
-            /* prevent the linker from optimizing away the caller function */ \
             static caller_func the_caller = [](void* _d_mixin , arg0_type a0, arg1_type a1, arg2_type a2, arg3_type a3, arg4_type a4, arg5_type a5) -> return_type \
             { \
                 constness Mixin* _d_m = reinterpret_cast<Mixin*>(_d_mixin); \

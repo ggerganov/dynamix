@@ -71,6 +71,19 @@ internal::message_perks_and_caller<Mixin, Message> bind(Message* msg, Ret (*ptr)
     return internal::bind<Mixin>(msg, the_caller);
 }
 
+template <typename Message, typename Mixin, typename Ret, typename... Args>
+internal::message_perks_and_caller<Mixin, Message> bind(Message* msg, Ret (*ptr)(const Mixin*, Args...))
+{
+    static const auto func = ptr;
+    static typename Message::caller_func the_caller = [](void* vm, Args... args) -> Ret
+    {
+        const Mixin* m = reinterpret_cast<Mixin*>(vm);
+        return func(m, std::forward<Args>(args)...);
+    };
+
+    return internal::bind<Mixin>(msg, the_caller);
+}
+
 // bind a method of the class to a message with a different name
 template <typename Message, typename Mixin, typename Ret, typename... Args>
 internal::message_perks_and_caller<Mixin, Message> bind(Message* msg, Ret (Mixin::*ptr)(Args...))

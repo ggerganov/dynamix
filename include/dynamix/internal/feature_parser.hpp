@@ -104,7 +104,7 @@ public:
     feature_parser_phase_2& operator & (message_perks<Message> mp)
     {
         Message& msg = get_registered_feature<Message>();
-        parse_message(msg, mp.bid, mp.priority, msg.template get_caller_for<Mixin>());
+        parse_message(msg, mp.bid, mp.priority, Message::template get_caller_for<Mixin>());
         return *this;
     }
 
@@ -135,7 +135,7 @@ private:
     template <typename Message>
     void parse_feature(Message& msg, const message_feature_tag&)
     {
-        parse_message(msg, 0, 0, msg.template get_caller_for<Mixin>());
+        parse_message(msg, 0, 0, Message::template get_caller_for<Mixin>());
     }
 
     void parse_message(message_t& msg, int bid, int priority, func_ptr caller)
